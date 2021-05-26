@@ -79,3 +79,4 @@ optional arguments:
   -t2 TREE2, --tree2 TREE2
                         Tree file in nexus format
 ```
+
