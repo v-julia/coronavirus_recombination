@@ -20,7 +20,11 @@ def color_tree(tree_file_name, color_dict):
                 already_color = taxa.find('[&!color')
                 if already_color != -1:
                     taxa = taxa[:already_color]
-                line = '\t' + taxa + '[&!color=' + color_dict[taxa] + ']\n'
+                try:
+                    line = '\t' + taxa + '[&!color=' + color_dict[taxa] + ']\n'
+                except KeyError:
+                    taxa = taxa.strip("'")
+                    line = '\t' + taxa + '[&!color=' + color_dict[taxa] + ']\n'
                 tree_colored_lines.append(line)
     tree_file.close()
     tree_colored = os.path.splitext(tree_file_name)[0] +'_colorgrad.nwk'
